@@ -30,3 +30,7 @@ body {
 .third-main {
   text-align: left;
 }
+.opensource {
+  text-align: center;
+  margin: 10px 30px 50px 30px;
+}
