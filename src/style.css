@@ -1,0 +1,32 @@
+body {
+  background-color: #ddeedf;
+}
+
+.container {
+  margin: 0 auto;
+}
+.city {
+  font-size: 30px;
+  font-weight: bold;
+}
+.temperature {
+  font-size: 25px;
+}
+.rain {
+  font-size: 20px;
+}
+.emoji {
+  font-size: 50px;
+}
+.emoji-description {
+  font-size: 20px;
+}
+.first-main {
+  text-align: center;
+}
+.second-main {
+  text-align: center;
+}
+.third-main {
+  text-align: left;
+}

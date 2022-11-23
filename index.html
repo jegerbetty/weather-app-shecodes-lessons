@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/54b9d5f084.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <div class="card border-success mb-3 border-5">
+        <div class="card-body">
+          <div class="row g-0 justify-content-md-center">
+            <div class="col">
+              <form id="city-search-bar">
+                <div class="row g-0">
+                  <div class="col-8">
+                    <div class="mb-3">
+                      <input
+                        type="search"
+                        class="form-control search-bar"
+                        placeholder="Where do you want to check the weather?"
+                        id="search-input"
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <div class="col-1">
+                    <button type="submit" class="btn btn-success search-btn">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                  <br />
+                  <div class="col-3 mb-3">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      id="my-location-btn"
+                    >
+                      Check my location
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="card border-success mb-3 border-5">
+        <div class="card-body">
+          <div class="row justify-content-md-center">
+            <div class="col-4 first-main">
+              <div class="emoji">⛅</div>
+              <div class="emoji-description">Cloudy with sun</div>
+            </div>
+            <div class="col-4 second-main">
+              <div class="city" id="current-city">Oslo</div>
+              <div class="temperature">
+                <span id="current-temp">15°C</span>
+                <br />
+                <a href="#" id="celsius">°C</a>
+                |
+                <a href="#" id="fahrenheit">°F</a>
+              </div>
+              <div class="rain">0mm</div>
+            </div>
+            <div class="col-3 offset-1 third-main">
+              <div class="date">
+                <strong>Date:</strong> <span id="today-date">15/10/2022</span>
+              </div>
+              <div class="time">
+                <strong>Time:</strong> <span id="current-time">14:35</span>
+              </div>
+              <div class="precipitation">
+                <strong>Precipitation:</strong> 5%
+              </div>
+              <div class="wind"><strong>Wind:</strong> 6km/h</div>
+              <div class="humidity"><strong>Humidity:</strong> 55%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card border-success mb-3 border-5">
+            <div class="card-body">
+              <h5 class="card-title">5-day forecast</h5>
+              <ul class="card-text list-group list-group-flush">
+                <li class="list-group-item">Mon: 🌨 Snow <br />-2°C/2°C, 5mm</li>
+                <li class="list-group-item">
+                  Tue: ☀ Sunny <br />10°C/14°C, 0mm
+                </li>
+                <li class="list-group-item">
+                  Wed:⛅Sunny with clouds <br />15°C/22°C, 0mm
+                </li>
+                <li class="list-group-item">
+                  Thu: ⛈ Lightning and rain <br />15°C/20°C, 2mm
+                </li>
+                <li class="list-group-item">
+                  Fri: ☀ Sunny <br />20°C/23°C, 0mm
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card border-success mb-3 border-5">
+            <div class="card-body">
+              <h5 class="card-title">Common City Searches</h5>
+              <ul class="card-text list-group list-group-flush">
+                <li class="list-group-item">
+                  <br /><a href="...">London</a><br />
+                </li>
+                <li class="list-group-item">
+                  <br /><a href="...">Tokyo</a><br />
+                </li>
+                <li class="list-group-item">
+                  <br /><a href="...">New York</a><br />
+                </li>
+                <li class="list-group-item">
+                  <br /><a href="...">Buenos Aires</a><br />
+                </li>
+                <li class="list-group-item">
+                  <br /><a href="...">Johannesburg</a><br />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
