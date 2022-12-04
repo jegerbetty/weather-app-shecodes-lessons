@@ -29,7 +29,6 @@ function displaySearchedCityTemp(response) {
 function searchCity(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-input");
-  let displayedCity = document.querySelector("#current-city");
 
   let apiKey = "63214c4281922e3bb72fdf12dada7734";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity.value}&units=metric&appid=${apiKey}`;
