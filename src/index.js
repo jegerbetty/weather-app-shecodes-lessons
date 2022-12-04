@@ -1,3 +1,27 @@
+function lastUpdatedFormat(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let day = days[date.getDay()];
+
+  let dayDate = date.getDate();
+  if (dayDate < 10) {
+    dayDate = `0${dayDate}`;
+  }
+
+  let month = months[date.getMonth()];
+
+  let fullYear = date.getFullYear();
+
+  return `${day} ${dayDate}/${month}/${fullYear} ${hours}:${minutes}`;
+}
+
 function displaySearchedCityTemp(response) {
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
@@ -21,6 +45,9 @@ function displaySearchedCityTemp(response) {
 
   //let rainElement = document.querySelector("#rain");
   //rainElement.innerHTML = Math.round(response.data.rain.1h);
+
+  let lastupdatedElement = document.querySelector("#last-updated-time");
+  lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
 
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", displayCelsius);
@@ -89,14 +116,45 @@ function searchCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+function currentTime() {
+  let now = new Date();
+
+  let day = days[now.getDay()];
+
+  let month = months[now.getMonth()];
+
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let date = now.getDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
+
+  let fullYear = now.getFullYear();
+  let formattedDate = `${day} ${date}/${month}/${fullYear}`;
+
+  let currentDate = document.querySelector("#date");
+  currentDate.innerHTML = `${formattedDate}`;
+  console.log(formattedDate);
+
+  let currentTime = document.querySelector("#time");
+  currentTime.innerHTML = `${hours}:${minutes}`;
+}
+
 let search = document.querySelector("#city-search-bar");
 search.addEventListener("submit", searchCity);
 
 let currentLocationSearch = document.querySelector("#my-location-btn");
 currentLocationSearch.addEventListener("click", searchCurrentLocation);
 
-let now = new Date();
-console.log(now);
 let days = [
   "Sunday",
   "Monday",
@@ -106,7 +164,6 @@ let days = [
   "Friday",
   "Saturday",
 ];
-let day = days[now.getDay()];
 
 let monthsName = [
   "January",
@@ -137,28 +194,8 @@ let months = [
   "11",
   "12",
 ];
-let month = months[now.getMonth()];
 
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-
-let date = now.getDate();
-let fullYear = now.getFullYear();
-let formattedDate = `${day} ${date}/${month}/${fullYear}`;
-
-let currentTime = document.querySelector("#time");
-currentTime.innerHTML = `${hours}:${minutes}`;
-
-let currentDate = document.querySelector("#date");
-currentDate.innerHTML = `${formattedDate}`;
-console.log(formattedDate);
+currentTime();
 
 let apiKey = "63214c4281922e3bb72fdf12dada7734";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&appid=${apiKey}`;
