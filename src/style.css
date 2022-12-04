@@ -2,6 +2,10 @@ body {
   background-color: #ddeedf;
 }
 
+.capitalisation:first-letter {
+  text-transform: capitalize;
+}
+
 .container {
   margin: 0 auto;
 }
