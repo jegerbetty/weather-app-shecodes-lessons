@@ -27,9 +27,6 @@ function displaySearchedCityTemp(response) {
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
   currentTemp.innerHTML = `${temperatureC}°C`;
-  console.log(temperatureC);
-  console.log(temperatureF);
-  console.log(currentTemp);
 
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
@@ -88,11 +85,9 @@ function searchCity(event) {
 
 function searchCurrentLocation() {
   function showCurrentLocationTemp(response) {
-    console.log(response);
     let currentLocationTemp = Math.round(response.data.main.temp);
     let currentLocationCity = response.data.name;
-    console.log(currentLocationTemp);
-    console.log(currentLocationCity);
+
     let temperatureDisplayed = document.querySelector("#current-temp");
     temperatureDisplayed.innerHTML = `${currentLocationTemp}°C`;
     let currentCityDisplayed = document.querySelector("#current-city");
@@ -130,7 +125,6 @@ function searchCurrentLocation() {
 
 function searchLondon() {
   let londonUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${apiKey}`;
-  console.log(londonUrl);
   axios.get(londonUrl).then(displaySearchedCityTemp);
 }
 
@@ -181,7 +175,6 @@ function currentTime() {
 
   let currentDate = document.querySelector("#date");
   currentDate.innerHTML = `${formattedDate}`;
-  console.log(formattedDate);
 
   let currentTime = document.querySelector("#time");
   currentTime.innerHTML = `${hours}:${minutes}`;
