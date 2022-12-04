@@ -23,6 +23,7 @@ function lastUpdatedFormat(timestamp) {
 }
 
 function displaySearchedCityTemp(response) {
+  console.log(response);
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
