@@ -147,6 +147,10 @@ let currentDate = document.querySelector("#date");
 currentDate.innerHTML = `${formattedDate}`;
 console.log(formattedDate);
 
+let apiKey = "63214c4281922e3bb72fdf12dada7734";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&appid=${apiKey}`;
+axios.get(apiUrl).then(displaySearchedCityTemp);
+
 //function displayCelsius(event) {
 //event.preventDefault();
 //let temperatureDisplayed = document.querySelector("#current-temp");
