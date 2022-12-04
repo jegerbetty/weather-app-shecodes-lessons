@@ -51,7 +51,12 @@ function displaySearchedCityTemp(response) {
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
 
   //let rainElement = document.querySelector("#rain");
-  //rainElement.innerHTML = Math.round(response.data.rain.1h);
+  //rainElement.innerHTML =
+  //if (response.data.rain.1h !== undefined) {
+  //return Math.round(response.data.rain.1h);
+  //} else {
+  //`0mm`;
+  //}
 
   let lastupdatedElement = document.querySelector("#last-updated-time");
   lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
