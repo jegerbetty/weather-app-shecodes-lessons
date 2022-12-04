@@ -128,6 +128,32 @@ function searchCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+function searchLondon() {
+  let londonUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${apiKey}`;
+  console.log(londonUrl);
+  axios.get(londonUrl).then(displaySearchedCityTemp);
+}
+
+function searchTokyo() {
+  let tokyoUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=metric&appid=${apiKey}`;
+  axios.get(tokyoUrl).then(displaySearchedCityTemp);
+}
+
+function searchNewYork() {
+  let newyorkUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
+  axios.get(newyorkUrl).then(displaySearchedCityTemp);
+}
+
+function searchBuenosAires() {
+  let buenosairesUrl = `https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&appid=${apiKey}`;
+  axios.get(buenosairesUrl).then(displaySearchedCityTemp);
+}
+
+function searchJohannesburg() {
+  let johannesburgUrl = `https://api.openweathermap.org/data/2.5/weather?q=Johannesburg&units=metric&appid=${apiKey}`;
+  axios.get(johannesburgUrl).then(displaySearchedCityTemp);
+}
+
 function currentTime() {
   let now = new Date();
 
@@ -166,6 +192,21 @@ search.addEventListener("submit", searchCity);
 
 let currentLocationSearch = document.querySelector("#my-location-btn");
 currentLocationSearch.addEventListener("click", searchCurrentLocation);
+
+let londonClick = document.querySelector("#London");
+londonClick.addEventListener("click", searchLondon);
+
+let tokyoClick = document.querySelector("#Tokyo");
+tokyoClick.addEventListener("click", searchTokyo);
+
+let newYorkClick = document.querySelector("#New-York");
+newYorkClick.addEventListener("click", searchNewYork);
+
+let buenosAiresClick = document.querySelector("#Buenos-Aires");
+buenosAiresClick.addEventListener("click", searchBuenosAires);
+
+let johannesburgClick = document.querySelector("#Johannesburg");
+johannesburgClick.addEventListener("click", searchJohannesburg);
 
 let days = [
   "Sunday",
