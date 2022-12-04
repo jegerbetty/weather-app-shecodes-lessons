@@ -10,6 +10,15 @@ function displaySearchedCityTemp(response) {
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
 
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+
+  //let rainElement = document.querySelector("#rain");
+  //rainElement.innerHTML = Math.round(response.data.rain.1h);
+
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", displayCelsius);
   let fahrenheit = document.querySelector("#fahrenheit");

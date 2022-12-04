@@ -64,8 +64,10 @@
         <div class="card-body">
           <div class="row justify-content-md-center">
             <div class="col-4 first-main">
-              <div class="emoji">⛅</div>
-              <div class="emoji-description">Cloudy with sun</div>
+              <div class="emoji" id="emoji">⛅</div>
+              <div class="emoji-description" id="description">
+                Cloudy with sun
+              </div>
             </div>
             <div class="col-4 second-main">
               <div class="city" id="current-city"></div>
@@ -85,14 +87,13 @@
               <div class="time">
                 <strong>Time:</strong> <span id="time">14:35</span>
               </div>
-              <div class="precipitation">
-                <strong>Precipitation:</strong>
-                <span id="precipitation">5%</span>
-              </div>
+
               <div class="wind">
                 <strong>Wind:</strong><span id="wind"> 6km/h</span>
               </div>
-              <div class="humidity"><strong>Humidity:</strong> 55%</div>
+              <div class="humidity">
+                <strong>Humidity: </strong><span id="humidity"></span>
+              </div>
             </div>
           </div>
         </div>
