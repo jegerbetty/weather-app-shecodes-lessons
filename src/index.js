@@ -66,11 +66,19 @@ function displaySearchedCityTemp(response) {
     event.preventDefault();
     let temperatureDisplayed = document.querySelector("#current-temp");
     temperatureDisplayed.innerHTML = `${temperatureC}°C`;
+    let celsius = document.querySelector("#celsius");
+    celsius.classList.add("active");
+    let fahrenheit = document.querySelector("#fahrenheit");
+    fahrenheit.classList.remove("active");
   }
   function displayFahrenheit(event) {
     event.preventDefault();
     let temperatureDisplay = document.querySelector("#current-temp");
     temperatureDisplay.innerHTML = `${temperatureF}°F`;
+    let celsius = document.querySelector("#celsius");
+    celsius.classList.remove("active");
+    let fahrenheit = document.querySelector("#fahrenheit");
+    fahrenheit.classList.add("active");
   }
 }
 
@@ -87,6 +95,33 @@ function searchCurrentLocation() {
   function showCurrentLocationTemp(response) {
     let currentLocationTemp = Math.round(response.data.main.temp);
     let currentLocationCity = response.data.name;
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    iconElement.setAttribute("alt", response.data.weather[0].description);
+
+    let descriptionElement = document.querySelector("#description");
+    descriptionElement.innerHTML = response.data.weather[0].description;
+
+    let humidityElement = document.querySelector("#humidity");
+    humidityElement.innerHTML = `${response.data.main.humidity}%`;
+
+    let windElement = document.querySelector("#wind");
+    windElement.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
+
+    //let rainElement = document.querySelector("#rain");
+    //rainElement.innerHTML =
+    //if (response.data.rain.1h !== undefined) {
+    //return Math.round(response.data.rain.1h);
+    //} else {
+    //`0mm`;
+    //}
+
+    let lastupdatedElement = document.querySelector("#last-updated-time");
+    lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
 
     let temperatureDisplayed = document.querySelector("#current-temp");
     temperatureDisplayed.innerHTML = `${currentLocationTemp}°C`;

@@ -16,6 +16,16 @@ body {
 .temperature {
   font-size: 25px;
 }
+.temperature .unit {
+  text-decoration: none;
+}
+.temperature .active {
+  color: #000;
+  cursor: default;
+}
+.temperature .active:hover {
+  text-decoration: none;
+}
 .rain {
   font-size: 20px;
 }
