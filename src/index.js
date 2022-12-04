@@ -7,6 +7,9 @@ function displaySearchedCityTemp(response) {
   console.log(temperatureF);
   console.log(currentTemp);
 
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = response.data.name;
+
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", displayCelsius);
   let fahrenheit = document.querySelector("#fahrenheit");
@@ -27,7 +30,6 @@ function searchCity(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-input");
   let displayedCity = document.querySelector("#current-city");
-  displayedCity.innerHTML = `${searchedCity.value}`;
 
   let apiKey = "63214c4281922e3bb72fdf12dada7734";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity.value}&units=metric&appid=${apiKey}`;
@@ -150,6 +152,7 @@ console.log(formattedDate);
 let apiKey = "63214c4281922e3bb72fdf12dada7734";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&appid=${apiKey}`;
 axios.get(apiUrl).then(displaySearchedCityTemp);
+//axios.get(apiUrl).then(searchCity);
 
 //function displayCelsius(event) {
 //event.preventDefault();
