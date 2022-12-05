@@ -115,11 +115,12 @@ function searchCurrentLocation() {
     windElement.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
 
     //let rainElement = document.querySelector("#rain");
-    //rainElement.innerHTML =
-    //if (response.data.rain.1h !== undefined) {
-    //return Math.round(response.data.rain.1h);
+    //let precipitation = Math.round(response.data.rain["1h"]);
+    //rainElement.innerHTML = `${precipitation}`;
+    //if (precipitation !== undefined) {
+    //  precipitation = `${Math.round(response.data.rain["1h"])}mm`;
     //} else {
-    //`0mm`;
+    //  precipitation = `0mm`;
     //}
 
     let lastupdatedElement = document.querySelector("#last-updated-time");
