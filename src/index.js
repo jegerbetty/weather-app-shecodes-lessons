@@ -219,6 +219,8 @@ let days = [
   "Saturday",
 ];
 
+let forecastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 let monthsName = [
   "January",
   "February",
