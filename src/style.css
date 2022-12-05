@@ -10,8 +10,9 @@ body {
   margin: 0 auto;
 }
 .city {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 .current-temp {
   font-weight: 200px;
@@ -23,7 +24,10 @@ body {
   font-size: 20px;
   top: -22px;
 }
-
+.last-updated {
+  margin-top: 15px;
+  margin-left: 10px;
+}
 .temperature {
   font-size: 25px;
 }
