@@ -94,69 +94,12 @@ function searchCity(event) {
 }
 
 function searchCurrentLocation() {
-  function showCurrentLocationTemp(response) {
-    let currentLocationTemp = Math.round(response.data.main.temp);
-    let currentLocationCity = response.data.name;
-
-    let iconElement = document.querySelector("#icon");
-    iconElement.setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-    iconElement.setAttribute("alt", response.data.weather[0].description);
-
-    let descriptionElement = document.querySelector("#description");
-    descriptionElement.innerHTML = response.data.weather[0].description;
-
-    let humidityElement = document.querySelector("#humidity");
-    humidityElement.innerHTML = `${response.data.main.humidity}%`;
-
-    let windElement = document.querySelector("#wind");
-    windElement.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
-
-    //let rainElement = document.querySelector("#rain");
-    //let precipitation = Math.round(response.data.rain["1h"]);
-    //rainElement.innerHTML = `${precipitation}`;
-    //if (precipitation !== undefined) {
-    //  precipitation = `${Math.round(response.data.rain["1h"])}mm`;
-    //} else {
-    //  precipitation = `0mm`;
-    //}
-
-    let lastupdatedElement = document.querySelector("#last-updated-time");
-    lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
-
-    let temperatureDisplayed = document.querySelector("#current-temp");
-    temperatureDisplayed.innerHTML = `${currentLocationTemp}`;
-    let currentCityDisplayed = document.querySelector("#current-city");
-    currentCityDisplayed.innerHTML = `${currentLocationCity}`;
-
-    let celsius = document.querySelector("#celsius");
-    celsius.addEventListener("click", displayCelsius);
-    let fahrenheit = document.querySelector("#fahrenheit");
-    fahrenheit.addEventListener("click", displayFahrenheit);
-
-    let temperatureC = currentLocationTemp;
-    let temperatureF = Math.round(currentLocationTemp * 1.8 + 32);
-
-    function displayCelsius(event) {
-      event.preventDefault();
-      let temperatureDisplayed = document.querySelector("#current-temp");
-      temperatureDisplayed.innerHTML = `${temperatureC}`;
-    }
-    function displayFahrenheit(event) {
-      event.preventDefault();
-      let temperatureDisplay = document.querySelector("#current-temp");
-      temperatureDisplay.innerHTML = `${temperatureF}`;
-    }
-  }
-
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let apiKey = "63214c4281922e3bb72fdf12dada7734";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(showCurrentLocationTemp);
+    axios.get(apiUrl).then(displaySearchedCityTemp);
   }
   navigator.geolocation.getCurrentPosition(showPosition);
 }
