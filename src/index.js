@@ -27,7 +27,7 @@ function displaySearchedCityTemp(response) {
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
-  currentTemp.innerHTML = `${temperatureC}°C`;
+  currentTemp.innerHTML = `${temperatureC}`;
 
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
@@ -67,7 +67,7 @@ function displaySearchedCityTemp(response) {
   function displayCelsius(event) {
     event.preventDefault();
     let temperatureDisplayed = document.querySelector("#current-temp");
-    temperatureDisplayed.innerHTML = `${temperatureC}°C`;
+    temperatureDisplayed.innerHTML = `${temperatureC}`;
     let celsius = document.querySelector("#celsius");
     celsius.classList.add("active");
     let fahrenheit = document.querySelector("#fahrenheit");
@@ -76,7 +76,7 @@ function displaySearchedCityTemp(response) {
   function displayFahrenheit(event) {
     event.preventDefault();
     let temperatureDisplay = document.querySelector("#current-temp");
-    temperatureDisplay.innerHTML = `${temperatureF}°F`;
+    temperatureDisplay.innerHTML = `${temperatureF}`;
     let celsius = document.querySelector("#celsius");
     celsius.classList.remove("active");
     let fahrenheit = document.querySelector("#fahrenheit");
@@ -126,7 +126,7 @@ function searchCurrentLocation() {
     lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
 
     let temperatureDisplayed = document.querySelector("#current-temp");
-    temperatureDisplayed.innerHTML = `${currentLocationTemp}°C`;
+    temperatureDisplayed.innerHTML = `${currentLocationTemp}`;
     let currentCityDisplayed = document.querySelector("#current-city");
     currentCityDisplayed.innerHTML = `${currentLocationCity}`;
 
@@ -141,12 +141,12 @@ function searchCurrentLocation() {
     function displayCelsius(event) {
       event.preventDefault();
       let temperatureDisplayed = document.querySelector("#current-temp");
-      temperatureDisplayed.innerHTML = `${temperatureC}°C`;
+      temperatureDisplayed.innerHTML = `${temperatureC}`;
     }
     function displayFahrenheit(event) {
       event.preventDefault();
       let temperatureDisplay = document.querySelector("#current-temp");
-      temperatureDisplay.innerHTML = `${temperatureF}°F`;
+      temperatureDisplay.innerHTML = `${temperatureF}`;
     }
   }
 
