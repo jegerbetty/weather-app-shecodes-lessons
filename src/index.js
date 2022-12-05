@@ -23,7 +23,6 @@ function lastUpdatedFormat(timestamp) {
 }
 
 function displaySearchedCityTemp(response) {
-  console.log(response);
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
@@ -87,6 +86,10 @@ function displaySearchedCityTemp(response) {
 function searchCity(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-input");
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
 
   let apiKey = "63214c4281922e3bb72fdf12dada7734";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity.value}&units=metric&appid=${apiKey}`;
@@ -101,31 +104,55 @@ function searchCurrentLocation() {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(displaySearchedCityTemp);
   }
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 function searchLondon() {
   let londonUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${apiKey}`;
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   axios.get(londonUrl).then(displaySearchedCityTemp);
 }
 
 function searchTokyo() {
   let tokyoUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=metric&appid=${apiKey}`;
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   axios.get(tokyoUrl).then(displaySearchedCityTemp);
 }
 
 function searchNewYork() {
   let newyorkUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   axios.get(newyorkUrl).then(displaySearchedCityTemp);
 }
 
 function searchBuenosAires() {
   let buenosairesUrl = `https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&appid=${apiKey}`;
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   axios.get(buenosairesUrl).then(displaySearchedCityTemp);
 }
 
 function searchJohannesburg() {
   let johannesburgUrl = `https://api.openweathermap.org/data/2.5/weather?q=Johannesburg&units=metric&appid=${apiKey}`;
+  let celsius = document.querySelector("#celsius");
+  celsius.classList.add("active");
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.classList.remove("active");
   axios.get(johannesburgUrl).then(displaySearchedCityTemp);
 }
 
