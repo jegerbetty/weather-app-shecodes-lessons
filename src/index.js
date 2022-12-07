@@ -23,6 +23,7 @@ function lastUpdatedFormat(timestamp) {
 }
 
 function displaySearchedCityTemp(response) {
+  console.log(response);
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
@@ -47,14 +48,14 @@ function displaySearchedCityTemp(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
 
-  //let rainElement = document.querySelector("#rain");
-  //let precipitation = Math.round(response.data.rain["1h"]);
-  //rainElement.innerHTML = `${precipitation}`;
-  //if (precipitation !== undefined) {
-  //  precipitation = `${Math.round(response.data.rain["1h"])}mm`;
-  //} else {
-  //  precipitation = `0mm`;
-  //}
+  let rainElement = document.querySelector("#rain");
+  let precipitation = response.data.rain["1h"];
+  rainElement.innerHTML = `${precipitation}mm`;
+  if (precipitation !== undefined) {
+    precipitation = `${precipitation}mm`;
+  } else {
+    precipitation = `0mm`;
+  }
 
   let lastupdatedElement = document.querySelector("#last-updated-time");
   lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
