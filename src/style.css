@@ -2,6 +2,10 @@ body {
   background-color: #ddeedf;
 }
 
+.my-location-btn {
+  margin-left: 4px;
+}
+
 .capitalisation:first-letter {
   text-transform: capitalize;
 }
