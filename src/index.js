@@ -172,6 +172,28 @@ function searchJohannesburg() {
   axios.get(johannesburgUrl).then(displaySearchedCityTemp);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<li class="list-group-item">
+    <span class="weather-forecast-day">${day}: </span>
+                  <span class="weather-forecast-icon">🌨</span>
+                  <span class="weather-forecast-description"> Snow </span>
+                  <br />
+                  <span class="weather-forecast-max">2°C</span>
+                  <span>/</span>
+                  <span class="weather-forecast-min">-2°C</span>
+                  <span class="weather-forecast-rain">5mm</span>
+                  </li>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function currentTime() {
   let now = new Date();
 
@@ -268,6 +290,7 @@ let months = [
 ];
 
 currentTime();
+displayForecast();
 
 let apiKey = "63214c4281922e3bb72fdf12dada7734";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&appid=${apiKey}`;
