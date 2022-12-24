@@ -214,9 +214,9 @@ function displayForecast(response) {
                   <span class="weather-forecast-min">${Math.round(
                     forecastDay.temp.min
                   )}°</span>
-                  <span class="weather-forecast-rain" id="rain-forecast">${
+                  <span class="weather-forecast-rain" id="rain-forecast">${Math.round(
                     forecastDay.rain
-                  }mm</span>
+                  )}mm</span>
                   </li>`;
     }
   });
