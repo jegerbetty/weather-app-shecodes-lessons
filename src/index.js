@@ -178,26 +178,49 @@ function searchJohannesburg() {
   axios.get(johannesburgUrl).then(displaySearchedCityTemp);
 }
 
+function formatForecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  return forecastDays[day];
+}
+
 function displayForecast(response) {
   console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
 
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<li class="list-group-item">
-    <span class="weather-forecast-day">${day}: </span>
-                  <span class="weather-forecast-icon">🌨</span>
-                  <span class="weather-forecast-description"> Snow </span>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `<li class="list-group-item">
+    <span class="weather-forecast-day">${formatForecastDate(
+      forecastDay.dt
+    )}: </span>
+                  <span class="weather-forecast-icon"><img src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png" width="30"/></span>
+                  <span class="weather-forecast-description"> ${
+                    forecastDay.weather[0].description
+                  } </span>
                   <br />
-                  <span class="weather-forecast-max">2°C</span>
+                  <span class="weather-forecast-max">${Math.round(
+                    forecastDay.temp.max
+                  )}°</span>
                   <span>/</span>
-                  <span class="weather-forecast-min">-2°C</span>
-                  <span class="weather-forecast-rain">5mm</span>
+                  <span class="weather-forecast-min">${Math.round(
+                    forecastDay.temp.min
+                  )}°</span>
+                  <span class="weather-forecast-rain" id="rain-forecast">${
+                    forecastDay.rain
+                  }mm</span>
                   </li>`;
+    }
   });
+
   forecastElement.innerHTML = forecastHTML;
 }
 
