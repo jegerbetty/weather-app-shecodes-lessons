@@ -22,8 +22,13 @@ function lastUpdatedFormat(timestamp) {
   return `${day} ${dayDate}/${month}/${fullYear} ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(forecastApiUrl).then(displayForecast);
+}
+
 function displaySearchedCityTemp(response) {
-  console.log(response);
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   let temperatureF = Math.round(response.data.main.temp * 1.8 + 32);
@@ -97,6 +102,7 @@ function displaySearchedCityTemp(response) {
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.classList.add("active");
   }
+  getForecast(response.data.coord);
 }
 
 function searchCity(event) {
@@ -172,7 +178,8 @@ function searchJohannesburg() {
   axios.get(johannesburgUrl).then(displaySearchedCityTemp);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
@@ -290,83 +297,7 @@ let months = [
 ];
 
 currentTime();
-displayForecast();
 
 let apiKey = "63214c4281922e3bb72fdf12dada7734";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&appid=${apiKey}`;
 axios.get(apiUrl).then(displaySearchedCityTemp);
-//axios.get(apiUrl).then(searchCity);
-
-//function displayCelsius(event) {
-//event.preventDefault();
-//let temperatureDisplayed = document.querySelector("#current-temp");
-//temperatureDisplayed.innerHTML = `${temperatureC}°C`;
-//}
-//function displayFahrenheit(event) {
-//event.preventDefault();
-//let temperatureDisplay = document.querySelector("#current-temp");
-//temperatureDisplay.innerHTML = `${temperatureF}°F`;
-//}
-
-//let currentTemp = document.querySelector("#current-temp");
-//let temperatureC = Math.round(15);
-//let temperatureF = Math.round(temperatureC * 1.8 + 32);
-//console.log(currentTemp);
-//console.log(temperatureC);
-//console.log(temperatureF);
-
-//let celsius = document.querySelector("#celsius");
-//celsius.addEventListener("click", displayCelsius);
-//let fahrenheit = document.querySelector("#fahrenheit");
-//fahrenheit.addEventListener("click", displayFahrenheit);
-
-//let weather = {
-//paris: {
-//temp: 19.7,
-//humidity: 80,
-//},
-//tokyo: {
-//temp: 17.3,
-//humidity: 50,
-//},
-//lisbon: {
-//temp: 30.2,
-//humidity: 20,
-//},
-//"san francisco": {
-//temp: 20.9,
-//humidity: 100,
-//},
-//oslo: {
-//temp: -5,
-//humidity: 20,
-//},
-//};
-
-// write your code here
-
-//let city = prompt(`Enter a city`);
-//city = city.toLowerCase();
-//city = city.trim();
-
-//function weatherMessage() {
-//let temperatureC = Math.round(weather[city].temp);
-//let temperatureF = Math.round(temperatureC * 1.8 + 32);
-//let humid = weather[city].humidity;
-
-//alert(
-//  `It is currently ${temperatureC}°C (${temperatureF}°F) in ${city} with a humidity of ${humid}%`
-//);
-//}
-
-//function sorryMessage() {
-//alert(
-//`Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${city}`
-//);
-//}
-
-//if (weather[city] !== undefined) {
-//weatherMessage();
-//} else {
-//sorryMessage();
-//}
