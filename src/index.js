@@ -90,8 +90,10 @@ function displaySearchedCityTemp(response) {
     temperatureDisplayed.innerHTML = `${temperatureC}`;
     let celsius = document.querySelector("#celsius");
     celsius.classList.add("active");
+    celsius.classList.remove("link-success");
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.classList.remove("active");
+    fahrenheit.classList.add("link-success");
   }
   function displayFahrenheit(event) {
     event.preventDefault();
@@ -99,8 +101,10 @@ function displaySearchedCityTemp(response) {
     temperatureDisplay.innerHTML = `${temperatureF}`;
     let celsius = document.querySelector("#celsius");
     celsius.classList.remove("active");
+    celsius.classList.add("link-success");
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.classList.add("active");
+    fahrenheit.classList.remove("link-success");
   }
   getForecast(response.data.coord);
 }
@@ -110,8 +114,10 @@ function searchCity(event) {
   let searchedCity = document.querySelector("#search-input");
   let celsius = document.querySelector("#celsius");
   celsius.classList.add("active");
+  celsius.classList.remove("link-success");
   let fahrenheit = document.querySelector("#fahrenheit");
   fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("link-success");
 
   let apiKey = "63214c4281922e3bb72fdf12dada7734";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity.value}&units=metric&appid=${apiKey}`;
@@ -128,8 +134,10 @@ function searchCurrentLocation() {
   }
   let celsius = document.querySelector("#celsius");
   celsius.classList.add("active");
+  celsius.classList.remove("link-success");
   let fahrenheit = document.querySelector("#fahrenheit");
   fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("link-success");
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
