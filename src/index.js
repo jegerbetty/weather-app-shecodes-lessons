@@ -28,6 +28,12 @@ function getForecast(coordinates) {
   axios.get(forecastApiUrl).then(displayForecast);
 }
 
+function getForecastFahrenheit(coordinates) {
+  console.log(coordinates);
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=imperial`;
+  axios.get(forecastApiUrl).then(displayForecast);
+}
+
 function displaySearchedCityTemp(response) {
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
@@ -80,6 +86,8 @@ function displaySearchedCityTemp(response) {
   let lastupdatedElement = document.querySelector("#last-updated-time");
   lastupdatedElement.innerHTML = lastUpdatedFormat(response.data.dt * 1000);
 
+  getForecast(response.data.coord);
+
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", displayCelsius);
   let fahrenheit = document.querySelector("#fahrenheit");
@@ -94,6 +102,7 @@ function displaySearchedCityTemp(response) {
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.classList.remove("active");
     fahrenheit.classList.add("link-success");
+    getForecast(response.data.coord);
   }
   function displayFahrenheit(event) {
     event.preventDefault();
@@ -105,8 +114,8 @@ function displaySearchedCityTemp(response) {
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.classList.add("active");
     fahrenheit.classList.remove("link-success");
+    getForecastFahrenheit(response.data.coord);
   }
-  getForecast(response.data.coord);
 }
 
 function searchCity(event) {
