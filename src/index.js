@@ -32,6 +32,23 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 6 && index > 0) {
+      if (forecastDay.rain && forecastDay.rain) {
+        let rain = forecastDay.rain;
+        if (rain !== undefined) {
+          rain = `${Math.round(rain)}`;
+        } else {
+          if (forecastDay.snow && forecastDay.snow) {
+            let rain = forecastDay.snow;
+            if (rain !== undefined) {
+              rain = `${Math.round(forecastDay.snow)}`;
+            }
+          } else {
+            rain = `0`;
+          }
+        }
+      } else {
+        rain = `0`;
+      }
       forecastHTML =
         forecastHTML +
         `<li class="list-group-item">
@@ -52,9 +69,7 @@ function displayForecast(response) {
                   <span class="weather-forecast-min">${Math.round(
                     forecastDay.temp.min
                   )}°</span>
-                  <span class="weather-forecast-rain" id="rain-forecast">${Math.round(
-                    forecastDay.rain
-                  )}mm</span>
+                  <span class="weather-forecast-rain" id="rain-forecast">${rain}mm</span>
                   </li>`;
     }
   });
