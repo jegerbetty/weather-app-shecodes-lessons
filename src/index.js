@@ -31,24 +31,16 @@ function displayForecast(response) {
   let forecastHTML = "";
 
   forecast.forEach(function (forecastDay, index) {
+    let rainSnowValue = 0;
     if (index < 6 && index > 0) {
-      if (forecastDay.rain && forecastDay.rain) {
-        let rain = forecastDay.rain;
-        if (rain !== undefined) {
-          rain = `${Math.round(rain)}`;
-        } else {
-          if (forecastDay.snow && forecastDay.snow) {
-            let rain = forecastDay.snow;
-            if (rain !== undefined) {
-              rain = `${Math.round(forecastDay.snow)}`;
-            }
-          } else {
-            rain = `0`;
-          }
-        }
+      if (forecastDay.rain) {
+        rainSnowValue = `${Math.round(forecastDay.rain)}`;
       } else {
-        rain = `0`;
+        if (forecastDay.snow && forecastDay.snow) {
+          rainSnowValue = `${Math.round(forecastDay.snow)}`;
+        }
       }
+
       forecastHTML =
         forecastHTML +
         `<li class="list-group-item">
@@ -69,7 +61,7 @@ function displayForecast(response) {
                   <span class="weather-forecast-min">${Math.round(
                     forecastDay.temp.min
                   )}°</span>
-                  <span class="weather-forecast-rain" id="rain-forecast">${rain}mm</span>
+                  <span class="weather-forecast-rain" id="rain-forecast">${rainSnowValue}mm</span>
                   </li>`;
     }
   });
@@ -83,6 +75,7 @@ function getForecast(coordinates) {
 }
 
 function displaySearchedCityTemp(response) {
+  console.log(response);
   let currentTemp = document.querySelector("#current-temp");
   let temperatureC = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${temperatureC}`;
