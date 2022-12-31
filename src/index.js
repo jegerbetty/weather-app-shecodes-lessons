@@ -33,15 +33,15 @@ function displayForecast(response) {
   forecast.forEach(function (forecastDay, index) {
     let rainSnowValue = 0;
     if (index < 6 && index > 0) {
-      if (forecastDay.rain && forecastDay.snow) {
-        rainSnowValue = `${Math.round(forecastDay.rain + forecastDay.snow)}`;
+      //if (forecastDay.rain && forecastDay.snow) {
+      //rainSnowValue = `${Math.round(forecastDay.rain + forecastDay.snow)}`;
+      //}
+      if (forecastDay.rain) {
+        rainSnowValue = `${Math.round(forecastDay.rain)}`;
       } else {
-        if (forecastDay.rain) {
-          rainSnowValue = `${Math.round(forecastDay.rain)}`;
+        if (forecastDay.snow) {
+          rainSnowValue = `${Math.round(forecastDay.snow)}`;
         }
-      }
-      if (forecastDay.snow) {
-        rainSnowValue = `${Math.round(forecastDay.snow)}`;
       }
 
       forecastHTML =
