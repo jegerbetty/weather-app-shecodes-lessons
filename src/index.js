@@ -105,25 +105,14 @@ function displaySearchedCityTemp(response) {
   let rainElement = document.querySelector("#rain");
   if (response.data.rain && response.data.rain["1h"]) {
     let precipitation = response.data.rain["1h"];
-    if (precipitation !== undefined) {
+    rainElement.innerHTML = `${precipitation}mm`;
+  } else {
+    if (response.data.snow && response.data.snow["1h"]) {
+      let precipitation = response.data.snow["1h"];
       rainElement.innerHTML = `${precipitation}mm`;
     } else {
       rainElement.innerHTML = `0mm`;
     }
-  } else {
-    rainElement.innerHTML = `0mm`;
-  }
-
-  let snowElement = document.querySelector("#rain");
-  if (response.data.snow && response.data.snow["1h"]) {
-    let precipitation = response.data.snow["1h"];
-    if (precipitation !== undefined) {
-      snowElement.innerHTML = `${precipitation}mm`;
-    } else {
-      snowElement.innerHTML = `0mm`;
-    }
-  } else {
-    snowElement.innerHTML = `0mm`;
   }
 
   let lastupdatedElement = document.querySelector("#last-updated-time");
