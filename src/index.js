@@ -83,6 +83,9 @@ function displaySearchedCityTemp(response) {
   let temperatureC = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${temperatureC}`;
 
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `${Math.round(response.data.main.feels_like)}°C`;
+
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
 

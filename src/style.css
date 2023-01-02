@@ -23,6 +23,9 @@ body {
   font-size: 50px;
   line-height: 1;
 }
+.feels-like {
+  font-style: italic;
+}
 .unit {
   position: relative;
   font-size: 20px;
