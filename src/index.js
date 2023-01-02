@@ -106,6 +106,12 @@ function displaySearchedCityTemp(response) {
   if (response.data.rain && response.data.rain["1h"]) {
     let precipitation = response.data.rain["1h"];
     rainElement.innerHTML = `${precipitation}mm`;
+    if (response.data.snow && response.data.snow["1h"]) {
+      let precipitation = Math.round(
+        response.data.rain["1h"] + response.data.snow["1h"]
+      );
+      rainElement.innerHTML = `${precipitation}mm`;
+    }
   } else {
     if (response.data.snow && response.data.snow["1h"]) {
       let precipitation = response.data.snow["1h"];
